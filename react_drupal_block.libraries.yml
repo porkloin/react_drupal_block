@@ -1,0 +1,8 @@
+global:
+  css:
+    base:
+      css/style.css: {}
+    component:
+      react-src/build/static/css/style.css: {}
+  js:
+    react-src/build/static/js/react-app.js: { preprocess: false }

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/react_drupal_block",
+  "type": "drupal-module",
+  "description": "Creates a sample Drupal block using React",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/react_drupal_block",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/react_drupal_block",
+    "source": "http://cgit.drupalcode.org/react_drupal_block"
+  },
+  "require": { }
+}
