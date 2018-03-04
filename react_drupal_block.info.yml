@@ -3,3 +3,5 @@ type: module
 description: 'Creates a sample Drupal block using React'
 core: 8.x
 package: 'Custom'
+dependencies:
+  - rest
