@@ -10,7 +10,7 @@ class App extends Component {
     }
     const baseUrl = '/';
     //const baseUrl = 'http://react-drupal-block.lndo.site/';
-    const path = 'api/content/' + this.props.DrupalNodeUUID;
+    const path = 'jsonapi/node/' + this.props.DrupalBundle + '/' + this.props.DrupalNodeUUID;
     const getAndSetContent = (link) => {
       fetch(link)
       .then((response) => {
@@ -19,7 +19,7 @@ class App extends Component {
       .then(document => {
         console.log(document);
         this.setState(prevState => ({
-          nodeContent: [...document]
+          nodeContent: document
         }));
       })
       .then(() => {
@@ -42,28 +42,21 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, edit <code>src/App.js</code> and run <code>yarn build</code> to see your changes.
         </p>
         <br />
-        <br />
         <p>
-          This React App is customized to be embedded in a Drupal Block. If a Node context UUID is available, it will be printed below:
+          This React App is customized to be embedded in a Drupal Block.
         </p>
         <p>
-          {this.props.DrupalNodeUUID ? this.props.DrupalNodeUUID : 'No UUID found! Are you running this in a Drupal block, or on a local yarn dev server?'}
+         If a Node context UUID is available, we will use the <a href="http://drupal.org/project/jsonapi">Drupal JSON API module</a> to get some vital stats about the node we are located at:
         </p>
-        <p>
-        Using a JSON view, here are some vital stats about the node we are placed on:
-        </p>
-        { this.state.nodeContent.map((content) => {
-          return (
-            <div>
-              <div>NID: {content.nid[0].value}</div>
-              <div>Title: {content.title[0].value}</div>
-              <div>Body: {content.body[0].value}</div>
-            </div>
-          );
-        })}
+        <div>
+          <div>{this.props.DrupalNodeUUID ? this.props.DrupalNodeUUID : 'No UUID found! Is this the front page? Or a local yarn dev server?'}</div>
+          <div>NID: {this.state.loading === false ? this.state.nodeContent.data.attributes.nid : 'n/a'}</div>
+          <div>Title: {this.state.loading === false ? this.state.nodeContent.data.attributes.title : 'n/a'}</div>
+          <div>Body: {this.state.loading === false ? this.state.nodeContent.data.attributes.body.value : 'n/a'}</div>
+        </div>
       </div>
     );
   }

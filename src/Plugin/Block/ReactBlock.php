@@ -32,6 +32,10 @@ class ReactBlock extends BlockBase {
       $contentType = $node->bundle();
       $uuid = $node->uuid->value;
     }
+    else {
+      $contentType = null;
+      $uuid = null;
+    }
     $build = array (
       '#theme' => 'react_drupal_block',
       '#attached' => array(
