@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - react_drupal_block
+  theme:
+    - bartik
+id: samplereactblock
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: react_block
+settings:
+  id: react_block
+  label: 'Sample React Block'
+  provider: react_drupal_block
+  label_display: visible
+visibility: {  }
